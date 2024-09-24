@@ -78,17 +78,36 @@ class CulturalEvent(models.Model):
     def __str__(self):
         return self.name
 
-# Cultural venue model with specific attributes as JSON
+
+# Model for types of cultural venues
+class CulturalVenueType(models.Model):
+    type_name = models.CharField(max_length=100, unique=True)  # Название типа (театр, кинотеатр и т.д.)
+    attributes_list = models.JSONField(default=list)  # Список атрибутов (без значений)
+
+    def __str__(self):
+        return self.type_name
+
+
+
 class CulturalVenue(models.Model):
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
-    type = models.CharField(max_length=100)
+    type = models.ForeignKey(CulturalVenueType, on_delete=models.CASCADE)
     number_of_halls = models.PositiveIntegerField(default=0)
     area = models.PositiveIntegerField(default=0)
-    specific_attributes = models.JSONField(default=dict)  # For custom attributes specific to the venue type
+    specific_attributes = models.JSONField(default=dict)  # JSONField для хранения атрибутов
+
+    def save(self, *args, **kwargs):
+        # Если атрибуты не заданы, подставляем их с нулевыми значениями на основе типа
+        if not self.specific_attributes:
+            default_attributes = {attr: None for attr in self.type.attributes_list}
+            self.specific_attributes = default_attributes
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
+
+
 
 # Relationship between events and venues
 class EventVenue(models.Model):

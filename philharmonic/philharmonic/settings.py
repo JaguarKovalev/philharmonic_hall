@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'philharmonic',
         'USER': 'jaguarkovalev',
-        'PASSWORD': '2909WjaguarK29',
+        'PASSWORD': '2909WjaguarK29', 
         'HOST': 'cloud.jkproduction.pro',
         'PORT': '5481',
     }
