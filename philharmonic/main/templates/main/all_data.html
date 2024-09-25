@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #3498db;
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        th:hover {
+            background-color: #2980b9;
+        }
+
+        td {
+            color: #333;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>All Data</h1>
+
+    <h2>People</h2>
+    <table>
+        <tr>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Email</th>
+        </tr>
+        {% for person in people %}
+        <tr>
+            <td>{{ person.last_name }}</td>
+            <td>{{ person.first_name }}</td>
+            <td>{{ person.email }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Artists</h2>
+    <table>
+        <tr>
+            <th>Full Name</th>
+            <th>Is National Artist</th>
+            <th>Favorite Instrument</th>
+        </tr>
+        {% for artist in artists %}
+        <tr>
+            <td>{{ artist.person.first_name }} {{ artist.person.last_name }}</td>
+            <td>{{ artist.is_national_artist }}</td>
+            <td>{{ artist.favorite_musical_instrument }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Genres</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Main Instrument</th>
+        </tr>
+        {% for genre in genres %}
+        <tr>
+            <td>{{ genre.name }}</td>
+            <td>{{ genre.main_instrument }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Artist Genres</h2>
+    <table>
+        <tr>
+            <th>Artist</th>
+            <th>Genre</th>
+            <th>Experience</th>
+        </tr>
+        {% for artist_genre in artist_genres %}
+        <tr>
+            <td>{{ artist_genre.artist.person.first_name }} {{ artist_genre.artist.person.last_name }}</td>
+            <td>{{ artist_genre.genre.name }}</td>
+            <td>{{ artist_genre.experience }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Impresarios</h2>
+    <table>
+        <tr>
+            <th>Full Name</th>
+            <th>Rating</th>
+            <th>Experience</th>
+        </tr>
+        {% for impresario in impresarios %}
+        <tr>
+            <td>{{ impresario.person.first_name }} {{ impresario.person.last_name }}</td>
+            <td>{{ impresario.rating }}</td>
+            <td>{{ impresario.experience }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Organizers</h2>
+    <table>
+        <tr>
+            <th>Full Name</th>
+            <th>Logistics Specialist</th>
+            <th>Role</th>
+        </tr>
+        {% for organizer in organizers %}
+        <tr>
+            <td>{{ organizer.person.first_name }} {{ organizer.person.last_name }}</td>
+            <td>{{ organizer.is_logistics_specialist }}</td>
+            <td>{{ organizer.role }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Contracts</h2>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Impresario</th>
+            <th>Organizer</th>
+        </tr>
+        {% for contract in contracts %}
+        <tr>
+            <td>{{ contract.contract_date }}</td>
+            <td>{{ contract.impresario.person.first_name }} {{ contract.impresario.person.last_name }}</td>
+            <td>{{ contract.organizer.person.first_name }} {{ contract.organizer.person.last_name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Cultural Events</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Tickets Sold</th>
+        </tr>
+        {% for event in events %}
+        <tr>
+            <td>{{ event.name }}</td>
+            <td>{{ event.event_type }}</td>
+            <td>{{ event.tickets_sold }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Cultural Venues</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Type</th>
+            <th>Attributes</th>
+        </tr>
+        {% for venue in venues %}
+        <tr>
+            <td>{{ venue.name }}</td>
+            <td>{{ venue.address }}</td>
+            <td>{{ venue.type.type_name }}</td>
+            <td>{{ venue.specific_attributes }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Event Venues</h2>
+    <table>
+        <tr>
+            <th>Event</th>
+            <th>Venue</th>
+            <th>Date</th>
+        </tr>
+        {% for event_venue in event_venues %}
+        <tr>
+            <td>{{ event_venue.cultural_event.name }}</td>
+            <td>{{ event_venue.cultural_venue.name }}</td>
+            <td>{{ event_venue.event_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Artist Contracts</h2>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Artist</th>
+            <th>Impresario</th>
+        </tr>
+        {% for artist_contract in artist_contracts %}
+        <tr>
+            <td>{{ artist_contract.contract_date }}</td>
+            <td>{{ artist_contract.artist.person.first_name }} {{ artist_contract.artist.person.last_name }}</td>
+            <td>{{ artist_contract.impresario.person.first_name }} {{ artist_contract.impresario.person.last_name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Artist Events</h2>
+    <table>
+        <tr>
+            <th>Artist</th>
+            <th>Event</th>
+            <th>Winner</th>
+            <th>Prize Winner</th>
+        </tr>
+        {% for artist_event in artist_events %}
+        <tr>
+            <td>{{ artist_event.artist.person.first_name }} {{ artist_event.artist.person.last_name }}</td>
+            <td>{{ artist_event.cultural_event.name }}</td>
+            <td>{{ artist_event.is_winner }}</td>
+            <td>{{ artist_event.is_prize_winner }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
