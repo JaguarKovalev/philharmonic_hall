@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запросы</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Combined Data</h1>
+
+    <!-- Форма для культурных сооружений -->
+    <h2>Фильтр культурных сооружений</h2>
+    <form method="get">
+        {{ venue_form.as_p }}
+        <button type="submit">Применить фильтр</button>
+    </form>
+
+    <h3>Результаты для культурных сооружений</h3>
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Адрес</th>
+            <th>Тип</th>
+            <th>Атрибуты</th>
+        </tr>
+        {% for venue in venues %}
+        <tr>
+            <td>{{ venue.name }}</td>
+            <td>{{ venue.address }}</td>
+            <td>{{ venue.type }}</td>
+            <td>{{ venue.specific_attributes }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Форма для артистов по жанру -->
+    <h2>Фильтр артистов по жанру</h2>
+    <form method="get">
+        {{ artist_genre_form.as_p }}
+        <button type="submit">Применить фильтр</button>
+    </form>
+
+    <h3>Результаты для артистов по жанру</h3>
+    <table>
+        <tr>
+            <th>Артист</th>
+            <th>Жанр</th>
+        </tr>
+        {% for artist in artists_by_genre %}
+        <tr>
+            <td>{{ artist.person.first_name }} {{ artist.person.last_name }}</td>
+            <td>{% for genre in artist.artist_genres.all %}{{ genre.name }} {% endfor %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Форма для артистов по импресарио -->
+    <h2>Фильтр артистов по импресарио</h2>
+    <form method="get">
+        {{ artist_impresario_form.as_p }}
+        <button type="submit">Применить фильтр</button>
+    </form>
+
+    <h3>Результаты для артистов по импресарио</h3>
+    <table>
+        <tr>
+            <th>Артист</th>
+            <th>Импресарио</th>
+        </tr>
+        {% for artist in artists_by_impresario %}
+        <tr>
+            <td>{{ artist.person.first_name }} {{ artist.person.last_name }}</td>
+            <td>{% for contract in artist.contracts.all %}{{ contract.impresario.person.first_name }} {{ contract.impresario.person.last_name }} {% endfor %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Артисты, работающие в нескольких жанрах -->
+    <h3>Артисты, выступающие в нескольких жанрах</h3>
+    <table>
+        <tr>
+            <th>Артист</th>
+            <th>Количество жанров</th>
+        </tr>
+        {% for artist in artists_in_multiple_genres %}
+        <tr>
+            <td>{{ artist.person.first_name }} {{ artist.person.last_name }}</td>
+            <td>{{ artist.artist_genres.count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Форма для фильтрации мероприятий -->
+    <h2>Фильтр мероприятий</h2>
+    <form method="get">
+        {{ event_form.as_p }}
+        <button type="submit">Применить фильтр</button>
+    </form>
+
+    <h3>Результаты для мероприятий</h3>
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Тип</th>
+            <th>Продано билетов</th>
+        </tr>
+        {% for event in events %}
+        <tr>
+            <td>{{ event.name }}</td>
+            <td>{{ event.event_type }}</td>
+            <td>{{ event.tickets_sold }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

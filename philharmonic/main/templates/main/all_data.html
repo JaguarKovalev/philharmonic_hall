@@ -77,13 +77,13 @@
     </style>
 </head>
 <body>
-    <h1>All Data</h1>
+    <h1>База данных</h1>
 
-    <h2>People</h2>
+    <h2>Люди</h2>
     <table>
         <tr>
-            <th>Last Name</th>
-            <th>First Name</th>
+            <th>Фамилия</th>
+            <th>Имя</th>
             <th>Email</th>
         </tr>
         {% for person in people %}
@@ -95,12 +95,12 @@
         {% endfor %}
     </table>
 
-    <h2>Artists</h2>
+    <h2>Артисты</h2>
     <table>
         <tr>
-            <th>Full Name</th>
-            <th>Is National Artist</th>
-            <th>Favorite Instrument</th>
+            <th>ФИО</th>
+            <th>Звание народного артиста</th>
+            <th>Основной инструмент</th>
         </tr>
         {% for artist in artists %}
         <tr>
@@ -111,11 +111,11 @@
         {% endfor %}
     </table>
 
-    <h2>Genres</h2>
+    <h2>Жанры</h2>
     <table>
         <tr>
-            <th>Name</th>
-            <th>Main Instrument</th>
+            <th>Название</th>
+            <th>Главный инструмент</th>
         </tr>
         {% for genre in genres %}
         <tr>
@@ -125,12 +125,12 @@
         {% endfor %}
     </table>
 
-    <h2>Artist Genres</h2>
+    <h2>Жанры по артистам</h2>
     <table>
         <tr>
-            <th>Artist</th>
-            <th>Genre</th>
-            <th>Experience</th>
+            <th>Aртист</th>
+            <th>Жанр</th>
+            <th>Опыт</th>
         </tr>
         {% for artist_genre in artist_genres %}
         <tr>
@@ -141,12 +141,12 @@
         {% endfor %}
     </table>
 
-    <h2>Impresarios</h2>
+    <h2>Импресарио</h2>
     <table>
         <tr>
-            <th>Full Name</th>
-            <th>Rating</th>
-            <th>Experience</th>
+            <th>ФИО</th>
+            <th>Рейтинг</th>
+            <th>Опыт</th>
         </tr>
         {% for impresario in impresarios %}
         <tr>
@@ -157,12 +157,12 @@
         {% endfor %}
     </table>
 
-    <h2>Organizers</h2>
+    <h2>Организаторы</h2>
     <table>
         <tr>
-            <th>Full Name</th>
-            <th>Logistics Specialist</th>
-            <th>Role</th>
+            <th>ФИО</th>
+            <th>Логистика</th>
+            <th>Направление</th>
         </tr>
         {% for organizer in organizers %}
         <tr>
@@ -173,12 +173,12 @@
         {% endfor %}
     </table>
 
-    <h2>Contracts</h2>
+    <h2>Контракты</h2>
     <table>
         <tr>
-            <th>Date</th>
-            <th>Impresario</th>
-            <th>Organizer</th>
+            <th>Дата</th>
+            <th>Импресарио</th>
+            <th>Организатор</th>
         </tr>
         {% for contract in contracts %}
         <tr>
@@ -189,12 +189,12 @@
         {% endfor %}
     </table>
 
-    <h2>Cultural Events</h2>
+    <h2>CКультурные мероприятия</h2>
     <table>
         <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Tickets Sold</th>
+            <th>Название</th>
+            <th>Тип</th>
+            <th>Количество проданных билетов</th>
         </tr>
         {% for event in events %}
         <tr>
@@ -205,13 +205,13 @@
         {% endfor %}
     </table>
 
-    <h2>Cultural Venues</h2>
+    <h2>Культурные сооружения</h2>
     <table>
         <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Type</th>
-            <th>Attributes</th>
+            <th>Название</th>
+            <th>Адрес</th>
+            <th>Тип</th>
+            <th>Специфичные атрибуты</th>
         </tr>
         {% for venue in venues %}
         <tr>
@@ -223,12 +223,12 @@
         {% endfor %}
     </table>
 
-    <h2>Event Venues</h2>
+    <h2>Места проведения мероприятий</h2>
     <table>
         <tr>
-            <th>Event</th>
-            <th>Venue</th>
-            <th>Date</th>
+            <th>Мероприятие</th>
+            <th>Место</th>
+            <th>Дата</th>
         </tr>
         {% for event_venue in event_venues %}
         <tr>
@@ -239,12 +239,12 @@
         {% endfor %}
     </table>
 
-    <h2>Artist Contracts</h2>
+    <h2>Контракты артистов</h2>
     <table>
         <tr>
-            <th>Date</th>
-            <th>Artist</th>
-            <th>Impresario</th>
+            <th>Дата</th>
+            <th>Артист</th>
+            <th>Импресарио</th>
         </tr>
         {% for artist_contract in artist_contracts %}
         <tr>
@@ -255,13 +255,13 @@
         {% endfor %}
     </table>
 
-    <h2>Artist Events</h2>
+    <h2>Артисты мероприятий</h2>
     <table>
         <tr>
-            <th>Artist</th>
-            <th>Event</th>
-            <th>Winner</th>
-            <th>Prize Winner</th>
+            <th>Артист</th>
+            <th>Мероприятие</th>
+            <th>Победитель</th>
+            <th>Приз</th>
         </tr>
         {% for artist_event in artist_events %}
         <tr>
