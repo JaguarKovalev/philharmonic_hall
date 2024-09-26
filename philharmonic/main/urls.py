@@ -1,7 +1,11 @@
 from django.urls import path
-from .views import get_venue_attributes
-from .views import all_data_view
-from .views import combined_view
+
+from .views import (
+    get_venue_attributes,
+    all_data_view,
+    combined_view,
+    execute_sql_query
+)
 
 urlpatterns = [
     path(
@@ -11,4 +15,5 @@ urlpatterns = [
     ),
     path("all-data/", all_data_view, name="all_data"),
     path('combined-data/', combined_view, name='combined_data'),
+    path('sql-query/', execute_sql_query, name='sql_query'),
 ]

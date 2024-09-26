@@ -1,12 +1,15 @@
 from django.db.models import Count
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.db import connection
+
 
 from .forms import (
     ArtistGenreForm,
     ArtistImpresarioForm,
     EventFilterForm,
     VenueFilterForm,
+    SQLQueryForm
 )
 from .models import (
     Artist,
@@ -131,3 +134,26 @@ def combined_view(request):
     }
 
     return render(request, 'main/combined_data.html', context)
+
+def execute_sql_query(request):
+    form = SQLQueryForm(request.POST or None)
+    result = None
+    error = None
+
+    if form.is_valid():
+        query = form.cleaned_data['query']
+        try:
+            with connection.cursor() as cursor:
+                cursor.execute(query)
+                if query.lower().startswith('select'):
+                    result = cursor.fetchall()  # Получаем данные, если запрос был SELECT
+                else:
+                    result = f"Запрос выполнен успешно. Затронуто {cursor.rowcount} строк."
+        except Exception as e:
+            error = str(e)
+
+    return render(request, 'main/sql_query.html', {
+        'form': form,
+        'result': result,
+        'error': error
+    })

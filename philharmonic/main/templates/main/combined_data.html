@@ -5,28 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Запросы</title>
     <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
             margin-bottom: 20px;
         }
 
+        h2 {
+            border-bottom: 2px solid #3498db;
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
         table, th, td {
-            border: 1px solid black;
+            border: 1px solid #ddd;
         }
 
         th, td {
-            padding: 8px;
+            padding: 12px 15px;
             text-align: left;
         }
 
         th {
             background-color: #3498db;
-            color: white;
+            color: #fff;
+            font-weight: bold;
         }
 
         tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        th:hover {
+            background-color: #2980b9;
+        }
+
+        td {
+            color: #333;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
         }
     </style>
 </head>

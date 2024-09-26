@@ -33,3 +33,10 @@ class EventFilterForm(forms.Form):
     end_date = forms.DateField(required=True, label="Дата окончания")
     organizer = forms.ModelChoiceField(queryset=Organizer.objects.all(), required=False, label="Организатор")
     venue = forms.ModelChoiceField(queryset=CulturalVenue.objects.all(), required=False, label="Культурное сооружение")
+
+
+class SQLQueryForm(forms.Form):
+    query = forms.CharField(
+        widget=forms.Textarea(attrs={'rows': 5, 'cols': 80}),
+        label="SQL-запрос"
+    )
