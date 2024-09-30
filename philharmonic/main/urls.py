@@ -4,7 +4,8 @@ from .views import (
     get_venue_attributes,
     all_data_view,
     combined_view,
-    execute_sql_query
+    execute_sql_query,
+    home
 )
 
 urlpatterns = [
@@ -16,4 +17,5 @@ urlpatterns = [
     path("all-data/", all_data_view, name="all_data"),
     path('combined-data/', combined_view, name='combined_data'),
     path('sql-query/', execute_sql_query, name='sql_query'),
+    path('', home, name='home'),
 ]

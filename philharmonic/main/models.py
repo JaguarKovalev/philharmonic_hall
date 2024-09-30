@@ -177,3 +177,5 @@ class ArtistEvent(models.Model):
 
     def __str__(self):
         return f"{self.artist} at {self.cultural_event}"
+
+

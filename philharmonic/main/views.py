@@ -157,3 +157,7 @@ def execute_sql_query(request):
         'result': result,
         'error': error
     })
+
+
+def home(request):
+    return render(request, 'main/home.html')

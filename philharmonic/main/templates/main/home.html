@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 50px;
+        }
+        a {
+            text-decoration: none;
+            color: #3498db;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #3498db;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Добро пожаловать!</h1>
+    <p>Выберите одну из доступных страниц:</p>
+    <ul>
+        <li><a href="{% url 'combined_data' %}">Страница с объединенными данными</a></li>
+        <li><a href="{% url 'sql_query' %}">Страница для выполнения SQL-запросов</a></li>
+        <li><a href="/admin/">Админка</a></li>
+        <li><a href="{% url 'all_data' %}">Таблицы</a></li>
+    </ul>
+</body>
+</html>
